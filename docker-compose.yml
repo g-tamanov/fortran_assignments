@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  fortran:
+    container_name: fortran
+    hostname: fortran
+    build:
+      context: ./
+      dockerfile: dockerfile
+    volumes:
+      - ./code:/fortran
+#    command: ["./make_and_run.sh","gfortran L1T2.F95 -o exec","./exec"]
+#Чтобы зайти в контейнер:
+#  1)закоментировать command: ["./make_and_run.sh","gfortran L1T2.F95 -o exec","./exec"] в docker-compose.yml
+#  2)в командной строке ввести docker-compose up
+#  3)в командной строке ввести docker exec -it -u root fortran bash
+
+#Перейти в папку с файлом(ваш код, пример L1T2.F95) cd /fortran
+#Скомпилировать проект gfortran L1T2.F95 -o exec , где (файл - L1T2.F95) (exec - имя бинарника на выходе)
+#Запустить бинарник ./exec
