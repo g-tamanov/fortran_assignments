@@ -16,7 +16,7 @@
   
 ###Остановить и очистить контейнер 
 - Ctrl+C = stop 
-- docker down = stop and clear
+- docker-compose down = stop and clear
 
 ###Удалить образы
 - clear_images.bat (windows)
