@@ -6,7 +6,7 @@
 Директория ваших исходных файлов для запуска в контейнере
 - папка code
 ### Зайти в контейнер (bash):
-  1) закоментировать **command:** **["./make_and_run.sh","gfortran L1T2.F95 -o exec","./exec"]** в **docker-compose.yml`**
+  1) закомментировать **command:** **["./make_and_run.sh","gfortran L1T2.F95 -o exec","./exec"]** в **docker-compose.yml`**
   2) в командной строке ввести `docker-compose up`
   3) в командной строке ввести `docker exec -it -u root fortran bash`
 ### Собрать и запустить в контейнере
