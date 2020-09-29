@@ -1,4 +1,14 @@
-program first
-    write(*,*) 'Hello, computer'
-    read(*,*)
-end
+program L1T2
+    real x,y
+    write(*,*)'write x'
+    read(*,*)x
+    write(*,*)'y=((2*x)**4)-((3*x)**3)+((4*x)**2)-(5*x)+6'
+    y=((2*x)**4)-((3*x)**3)+((4*x)**2)-(5*x)+6
+    write(*,*)'y=',y
+    write(*,*)'y=1-(2*x)+((3*x)**2)-((4*x)**3)'
+    y=1-(2*x)+((3*x)**2)-((4*x)**3)
+    write(*,*)'y=',y
+    write(*,*)'y=1+(2*x)+((3*x)**2)+((4*x)**3)'
+    y=1+(2*x)+((3*x)**2)+((4*x)**3)
+    write(*,*)'y=',y
+end program L1T2

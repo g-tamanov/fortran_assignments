@@ -1,21 +1,23 @@
-program l2t1
-    integer a,b
-    real c,d
-    write(*,*) 'write a'
-    read(*,*) a
-    write(*,*) 'a=',a
-    write(*,*) 'write b'
-    read(*,*) b
-    write(*,*) 'b=',b
-    a=a+b
-    write(*,*) 'a=a+b=',a
+program L2T1
+    real a, b, c, x
 
-    write(*,*) 'write c'
-    read(*,*) c
-    write(*,*) 'c=',c
-    write(*,*) 'write d'
-    read(*,*) d
-    write(*,*) 'd=',d
-    c=c-d
-    write(*,*) 'c=c-d=',c
-end program l2t1
+    write(*, *) 'write a,b,c '
+    write(*, *) 'write a'
+    read(*, *) a
+    write(*, *) 'a=', a
+    write(*, *) 'write b'
+    read(*, *) b
+    write(*, *) 'b=', b
+    write(*, *) 'write c'
+    read(*, *) c
+    write(*, *) 'c=', c
+
+    if ((a>b) .and. (a>c)) then
+        write(*, *) 'a'
+    elseif ((b>c)) then
+        write(*, *) 'b'
+    else
+        write(*, *) 'c'
+    end if
+
+end program L2T1
