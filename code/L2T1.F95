@@ -13,11 +13,11 @@ program L2T1
     write(*, *) 'c=', c
 
     if ((a>b) .and. (a>c)) then
-        write(*, *) 'a'
+        write(*, *) 'max real a'
     elseif ((b>c)) then
-        write(*, *) 'b'
+        write(*, *) 'max real b'
     else
-        write(*, *) 'c'
+        write(*, *) 'max real c'
     end if
 
 end program L2T1
