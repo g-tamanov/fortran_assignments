@@ -20,7 +20,7 @@ program L2T1
             write(*, *) 'mid real c and max real b'
         end if
     elseif ((b>c)) then
-        write(*, *) 'min real c'
+        write(*, *) 'min real c '
         if (b>a) then
             write(*, *) 'mid real a and max real b'
         else
