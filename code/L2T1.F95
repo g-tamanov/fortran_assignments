@@ -1,5 +1,5 @@
 program L2T1
-    real a, b, c, x
+    real a, b, c
 
     write(*, *) 'write a,b,c '
     write(*, *) 'write a'
