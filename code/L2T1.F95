@@ -12,12 +12,12 @@ program L2T1
     read(*, *) c
     write(*, *) 'c=', c
 
-    if ((a>b) .and. (a>c)) then
-        write(*, *) 'max real a'
+    if ((a<b) .and. (a<c)) then
+        write(*, *) 'min real a'
     elseif ((b>c)) then
-        write(*, *) 'max real b'
+        write(*, *) 'min real c '
     else
-        write(*, *) 'max real c'
+        write(*, *) 'min real b'
     end if
 
 end program L2T1
