@@ -28,6 +28,11 @@ program L2T1
         end if
     else
         write(*, *) 'min real b'
+        if (c>a) then
+            write(*, *) 'mid real a and max real c'
+        else
+            write(*, *) 'mid real c and max real a'
+        end if
     end if
 
 end program L2T1
