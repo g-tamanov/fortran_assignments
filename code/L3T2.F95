@@ -1,4 +1,4 @@
-program L3T1
+program L3T2
     integer x
 
     write(*, *) 'введите номер месяца'
@@ -17,4 +17,4 @@ program L3T1
         write(*, *) "наилучшие пожелания в следующей лотерее"
     End Select
 
-end program L3T1
+end program L3T2
