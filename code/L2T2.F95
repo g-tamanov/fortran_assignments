@@ -1,4 +1,4 @@
-program L2T1
+program L2T2
     real a, b, c, x
 
     write(*, *) 'write a,b,c '
@@ -35,4 +35,4 @@ program L2T1
         end if
     end if
 
-end program L2T1
+end program L2T2
