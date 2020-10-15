@@ -1,4 +1,4 @@
-program L5T2
+program L5T3
     implicit none
     integer, allocatable :: matrix(:)
     integer s, i, min, max
@@ -22,4 +22,4 @@ program L5T2
     write (*, *) "сумма положительных чисел: ", max
     write (*, *) "сумма отрицательных чисел: ", min
 
-end program L5T2
+end program L5T3
