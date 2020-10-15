@@ -1,7 +1,8 @@
 program L5T1
-    integer mass(10), iflag, sum
-    do i = 1, 10
-        mass(i) = irand(iflag)
+    integer mass(10), sum
+    sum=0
+    do i = 1, size(mass,1)
+        mass(i) =  anint(hav * 2) - 1
         sum = sum + mass(i)
     end do
     write(*, *) " сумма элементов массива = ",sum
