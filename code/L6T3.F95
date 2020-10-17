@@ -9,13 +9,17 @@ program L6T3
             matrix(i, j) = 4
             if(j==i) then
                 matrix(i, j) = 0
-            else if(i==size(matrix, 1) - j + 1) then
+            end if
+            if(i==size(matrix, 1) - j + 1) then
                 matrix(i, j) = 0
-            else if(i>j .and. i/=j .and. i<size(matrix, 1) - j + 1) then
+            end if
+            if(i>j .and. i/=j .and. i<size(matrix, 1) - j + 1) then
                 matrix(i, j) = 1
-            else if(i<j .and. i/=j .and. i/=size(matrix, 1) - j + 1) then
+            end if
+            if(i<j .and. i/=j .and. i/=size(matrix, 1) - j + 1) then
                 matrix(i, j) = 3
-            else if(i<j .and. i/=j .and. i>size(matrix, 1) - j + 1) then
+            end if
+            if(i<j .and. i/=j .and. i>size(matrix, 1) - j + 1) then
                 matrix(i, j) = 2
             end if
 
