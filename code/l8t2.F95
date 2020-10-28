@@ -1,0 +1,212 @@
+module find_sort_array
+contains
+
+    subroutine OnlySortForL8T2 (in_arr, out_arr, in_val)
+        !возвращает индексы найденного значения из сорт масс
+        integer, dimension (:), intent (in) :: in_arr
+        integer, dimension (:), allocatable, intent (out) :: out_arr
+        integer :: i, ii, iii, len, in_val, index
+        len = size (in_arr)
+        allocate (out_arr (1:len))
+
+        ii = 1
+        iii = size(out_arr)
+        !раскидываем элементы между p
+        do i = ii, size(in_arr)
+            if(in_arr(i)>in_val) then
+                out_arr(iii) = in_arr(i)
+                iii = iii - 1
+                !                print *, "in_arr(i)",in_arr(i),">=","in_val",in_val
+            else if(in_arr(i)<in_val) then
+                !                print *, "in_arr(i)",in_arr(i),"<","in_val",in_val
+                out_arr(ii) = in_arr(i)
+                ii = ii + 1
+            end if
+        end do
+        !добавляем p элемента
+        do i=ii,iii
+            out_arr(i)=in_val
+        end do
+        call FindLocArray(in_arr, in_val, index) !находим первый индекс p-ый
+        return
+    end subroutine OnlySortForL8T2
+
+    subroutine SwapElementArray (in_arr, i, ii)
+        !меняет элементы массива местами
+        integer in_arr(:)
+        integer i, ii, temp
+        temp = in_arr(i)
+        in_arr(i) = in_arr(ii)
+        in_arr(ii) = temp
+        return
+    end subroutine SwapElementArray
+
+    subroutine FindLocArray (in_arr, in_val, out_i)
+        !меняет элементы массива местами
+        integer in_arr(:)
+        integer in_val, out_i, temp
+        do i = 1, size(in_arr)
+            if(in_arr(i)==in_val) then
+                out_i = i
+                !                print *, "out_i", out_i, "==", "i", i
+                return
+            end if
+        end do
+    end subroutine FindLocArray
+
+    subroutine FindIndexElementsArray (in_arr, out_arr, in_val)
+        !возвращает индексы найденного значения из масс
+        integer, dimension (:), intent (in) :: in_arr
+        integer, dimension (:), allocatable, intent (out) :: out_arr
+        integer :: i, ii, len, in_val
+        len = size (in_arr)
+        allocate (out_arr (1:len))
+        ii = 1
+        do i = ii, size(in_arr)
+            if(in_arr(i)==in_val) then
+                out_arr(ii) = i
+                ii = ii + 1
+                print *, "добавлен индекс числа", in_val, "=", i
+                write(1, *) "добавлен индекс числа", in_val, "=", i
+            end if
+        end do
+        return
+    end subroutine FindIndexElementsArray
+
+    subroutine FindIndexElementSortArray (in_arr, out_arr, in_val)
+        !возвращает индексы найденного значения из сорт масс
+        integer, dimension (:), intent (in) :: in_arr
+        integer, dimension (:), allocatable, intent (out) :: out_arr
+        integer :: i, ii, iii, len, in_val
+        len = size (in_arr)
+        allocate (out_arr (1:len))
+        ii = 1
+        do i = ii, size(in_arr)
+            if(in_arr(i)==in_val) then
+                out_arr(ii) = i
+                ii = ii + 1
+                print *, "добавлен индекс числа", in_val, "=", i
+                write(1, *) "добавлен индекс числа", in_val, "=", i
+            else if (ii>1) then
+                write(*, *) "найдены все элементы в сортированном массе"
+                write(1, *) "найдены все элементы в сортированном массе"
+                return
+            end if
+        end do
+        return
+    end subroutine FindIndexElementSortArray
+
+    subroutine RemoveSameElementsFromArray (in_arr, out_arr)
+        !удаляет одинаковые элементы в массе
+        integer, dimension (:), intent (in) :: in_arr
+        integer, dimension (:), allocatable, intent (out) :: out_arr
+        integer :: i, ii, len, in_val
+        len = size (in_arr)
+        allocate (out_arr (1:len))
+        iii = 1
+        do i = iii, size(in_arr)
+            in_val = in_arr(i)
+            do ii = 1, size(out_arr)
+                if(in_arr(i)==out_arr(ii)) then
+                    exit
+                else if(size(out_arr)==ii) then
+                    out_arr(iii) = in_arr(i)
+                    iii = iii + 1
+                end if
+            end do
+        end do
+        return
+    end subroutine RemoveSameElementsFromArray
+
+    subroutine ArrayResize (in_arr, out_arr, out_arr_new_size)
+        !меняет размер масс
+        integer, dimension (:), intent (in) :: in_arr
+        integer, dimension (:), allocatable, intent (out) :: out_arr
+        integer :: i, out_arr_new_size
+        allocate (out_arr (1:out_arr_new_size))
+        do i = 1, out_arr_new_size
+            out_arr(i) = in_arr(i)
+        end do
+        return
+    end subroutine ArrayResize
+
+    subroutine SortBubbleASC (in_array)
+        !сортировка пузырьком от миньшего к большему
+        integer in_array(:)
+        integer temp, i
+        logical swap
+        swap = .TRUE.
+        do while(swap)
+            swap = .FALSE.
+            do i = 1, size(in_array)
+                if(i + 1<=size(in_array) .and. in_array(i)>in_array(i + 1)) then
+                    call SwapElementArray(in_array, i, i + 1)
+                    swap = .TRUE.
+                end if
+            end do
+        end do
+        write(*, *) "отсортированный масс ", in_array
+        write(1, *) "отсортированный масс ", in_array
+        return
+    end subroutine SortBubbleASC
+
+    subroutine SortBubbleDESC (in_array)
+        !сортировка пузырьком от большего к меньшему
+        integer in_array(:)
+        integer temp, i
+        logical swap
+        swap = .TRUE.
+        do while(swap)
+            swap = .FALSE.
+            do i = 1, size(in_array)
+                if(i + 1<=size(in_array) .and. in_array(i)<in_array(i + 1)) then
+                    call SwapElementArray(in_array, i, i + 1)
+                    swap = .TRUE.
+                end if
+            end do
+        end do
+        write(*, *) "отсортированный масс ", in_array
+        write(1, *) "отсортированный масс ", in_array
+        return
+    end subroutine SortBubbleDESC
+
+end module find_sort_array
+
+program L8T2
+    use find_sort_array
+
+    implicit none
+    integer, allocatable :: matrix(:), sortMatrix(:), sameMatrix(:), indexes(:)
+    integer s, i, index_k, index_p
+    real hav
+    OPEN (1, FILE = 'l8t2.txt', ACCESS = 'SEQUENTIAL', STATUS = 'unknown')
+
+    s = 100
+    allocate(matrix(s))
+
+    do i = 1, size(matrix, 1)
+        call random_number(hav)
+        matrix(i) = anint(hav * 10)
+    end do
+
+    write(*, *) "1) Неотсорт масс", matrix
+    write(1, *) "1) Неотсорт масс", matrix
+
+    write(*, *) "2) Задать k-ый номер яч масс"
+    read (*, *)  index_k
+    write(1, *) "2) k-ый номер яч масс", index_k
+
+    index_p = size(matrix) / 2
+    write(*, *) "3) произвольный  p-ый элемент списка", matrix(index_p)
+    write(1, *) "3) произвольный  p-ый элемент списка", matrix(index_p)
+
+    call OnlySortForL8T2(matrix, sortMatrix, matrix(index_p))
+    write(*, *) "4) дополнительный массив  ", sortMatrix
+    write(1, *) "4) дополнительный массив  ", sortMatrix
+
+    write(*, *) "5) k-ый номер знач масс", matrix(index_k)
+    write(1, *) "5) k-ый номер знач масс", matrix(index_k)
+
+    close(1)
+
+end program L8T2

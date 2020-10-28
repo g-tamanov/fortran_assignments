@@ -1,6 +1,7 @@
 program L6T3
     integer  matrix (5, 5)
     real x
+    OPEN (1, FILE = 'l6t3.txt', ACCESS = 'SEQUENTIAL', STATUS = 'unknown')
 
     CALL RANDOM_SEED()
 
@@ -26,6 +27,8 @@ program L6T3
         end do
     end do
     write(*, 10)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
+    write(1, 10)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
     10   format(2x, 5i5)
+    close(1)
 
 end program L6T3
