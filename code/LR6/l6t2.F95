@@ -17,13 +17,20 @@ program L6T2
             end if
         end do
     end do
-    write(*, 10)  ((matrix(i, j), i = 1, 10), j = 1, 10)
-    write(1, 10)  ((matrix(i, j), i = 1, 10), j = 1, 10)
-    10   format(2x, 10i10)
+    write (*, *) "массив: "
+    write (1, *) "массив: "
+    write(*, 2)  ((matrix(i, j), i = 1, 10), j = 1, 10)
+    write(1, 2)  ((matrix(i, j), i = 1, 10), j = 1, 10)
+
+    write (1, *) "Координаты нулевых элементов массива: "
+    write (*, *) "Координаты нулевых элементов массива: "
     do i = 1, pointi
-        write(*, *) "Координаты нулевых элементов массива"," x: ",pointx(i),"y:",pointy(i)
-        write(1, *) "Координаты нулевых элементов массива"," x: ",pointx(i),"y:",pointy(i)
+        write(*, 3)  pointx(i), pointy(i)
+        write(1, 3)  pointx(i), pointy(i)
     end do
+
+    2   format(2x, 10i10)
+    3 format(" x=", i2,"   y=",i2)
     close(1)
 
 end program L6T2

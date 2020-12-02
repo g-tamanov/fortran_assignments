@@ -8,10 +8,20 @@ program L5T1
         call random_number(hav)
         mass(i) =  anint(hav * 100) - 50
         sum = sum + mass(i)
-        write(1, *) "mass(i)", i,"=",mass(i)
     end do
-    write(*, *) " сумма элементов массива = ",sum
-    write(1, *) " сумма элементов массива = ",sum
+
+    write(*,*)'массив:'
+    write(*,2)(mass(i),i=1,10)
+
+    write(1,*)'массив:'
+    write(1,2)(mass(i),i=1,10)
+
+    2 format(10(2x, i4))
+
+    write(*,3)(sum)
+    write(1,3)(sum)
+
+    3 format('Сумма чисел:  ', i4)
     close(1)
 
 end program L5T1

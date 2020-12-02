@@ -10,10 +10,10 @@ contains
         ii = 1
         do i = ii, size(in_arr)
             if(in_arr(i)==in_val) then
-                out_arr(ii) = i
+                out_arr(i) = i
                 ii = ii + 1
-                print *, "добавлен индекс числа", in_val, "=", i
-                write(1, *) "добавлен индекс числа", in_val, "=", i
+            else
+                out_arr(i) = 0
             end if
         end do
         return
@@ -28,13 +28,9 @@ contains
         ii = 1
         do i = ii, size(in_arr)
             if(in_arr(i)==in_val ) then
-                out_arr(ii) = i
+                out_arr(i) = i
                 ii = ii + 1
-                print *, "добавлен индекс числа", in_val, "=", i
-                write(1, *) "добавлен индекс числа", in_val, "=", i
             else if (ii>1) then
-                write(*, *) "найдены все элементы в сортированном массиве"
-                write(1, *) "найдены все элементы в сортированном массиве"
                 return
             end if
         end do
@@ -57,8 +53,6 @@ contains
                 end if
             end do
         end do
-        write(*, *) "отсортированный массив ",in_array
-        write(1, *) "отсортированный массив ",in_array
         return
     end subroutine sort
 
@@ -86,12 +80,27 @@ program L7T2
         matrix(i) = anint(hav * 10)
     end do
 
-    write(*, *) " массив",matrix
-    write(1, *) " массив",matrix
+    write(*, *) "массив:"
+    write(1, *) "массив:"
+    write(*,2)(matrix(i),i=1,size(matrix))
+    write(1,2)(matrix(i),i=1,size(matrix))
+
     call sort(matrix)
+    write(*, *) "отсортированный массив:"
+    write(1, *) "отсортированный массив:"
+    write(*,2)(matrix(i),i=1,size(matrix))
+    write(1,2)(matrix(i),i=1,size(matrix))
+
     call findElementsSort(matrix,result, num)
-    write(*, *) "индексы чисел",result
-    write(1, *) "индексы чисел",result
+
+    write(*, 3) num
+    write(1, 3) num
+    write(*,2)(result(i),i=1,size(result))
+    write(1,2)(result(i),i=1,size(result))
+
+    2 format(10(2x, i2))
+    3 format(" индексы числа: ", i2)
+
     close(1)
 
 end program L7T2

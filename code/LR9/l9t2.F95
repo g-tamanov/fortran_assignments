@@ -202,35 +202,49 @@ contains
     subroutine SortBubbleRealASC (in_array)
         !сортировка пузырьком от миньшего к большему
         real in_array(:)
-        integer temp, i
+        integer k,kk, i
         logical swap
         swap = .TRUE.
         do while(swap)
             swap = .FALSE.
             do i = 1, size(in_array)
+                k=k+1
                 if(i + 1<=size(in_array) .and. in_array(i)>in_array(i + 1)) then
+                    kk=kk+1
                     call SwapElementArrayReal(in_array, i, i + 1)
                     swap = .TRUE.
                 end if
             end do
         end do
+        write (*, *) "сравнения k= ", k
+        write (1, *) "сравнения k= ", k
+        write (*, *) "перестановки kk= ", kk
+        write (1, *) "перестановки kk= ", kk
         return
     end subroutine SortBubbleRealASC
     subroutine SortBubbleRealDESC (in_array)
         !сортировка пузырьком от большего к меньшему
         real in_array(:)
-        integer temp, i
+        integer k,kk, i
         logical swap
+        k=0
+        kk=k
         swap = .TRUE.
         do while(swap)
             swap = .FALSE.
             do i = 1, size(in_array)
+                k=k+1
                 if(i + 1<=size(in_array) .and. in_array(i)<in_array(i + 1)) then
+                    kk=kk+1
                     call SwapElementArrayReal(in_array, i, i + 1)
                     swap = .TRUE.
                 end if
             end do
         end do
+        write (*, *) "сравнения k= ", k
+        write (1, *) "сравнения k= ", k
+        write (*, *) "перестановки kk= ", kk
+        write (1, *) "перестановки kk= ", kk
         return
     end subroutine SortBubbleRealDESC
 

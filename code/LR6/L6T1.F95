@@ -22,15 +22,21 @@ program L6T1
                 ijmin=j
             end if
         end do
-        write (*, *) "matrix(i,j): ",i,j,"=",matrix(i,j)
     end do
-    write(*, 10)  ((matrix(i,j),i=1,5),j=1,6)
-    write(1, 10)  ((matrix(i,j),i=1,5),j=1,6)
-    10   format(2x,5f6.2)
-    write (*, *) "индекс минимального числа по модолю: ",iimin,ijmin
-    write (1, *) "индекс минимального числа по модолю: ",iimin,ijmin
-    write (*, *) "индекс максимального числа по модолю: ",iimax,ijmax
-    write (1, *) "индекс максимального числа по модолю: ",iimax,ijmax
+    write (*, *) "массив: "
+    write (1, *) "массив: "
+    write(*, 2)  ((matrix(i,j),i=1,5),j=1,6)
+    write(1, 2)  ((matrix(i,j),i=1,5),j=1,6)
+
+    write (*, 3) iimin,ijmin
+    write (1, 3) iimin,ijmin
+    write (*, 4) iimax,ijmax
+    write (1, 4) iimax,ijmax
+
+    2   format(2x,5f6.2)
+    3 format("индекс минимального числа по модолю: ", i3,i3)
+    4 format("индекс максимального числа по модолю: ", i3,i3)
+
     close(1)
 
 end program L6T1

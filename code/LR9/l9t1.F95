@@ -202,35 +202,49 @@ contains
     subroutine SortBubbleRealASC (in_array)
         !сортировка пузырьком от миньшего к большему
         real in_array(:)
-        integer temp, i
+        integer k,kk, i
         logical swap
         swap = .TRUE.
         do while(swap)
             swap = .FALSE.
             do i = 1, size(in_array)
+                k=k+1
                 if(i + 1<=size(in_array) .and. in_array(i)>in_array(i + 1)) then
+                    kk=kk+1
                     call SwapElementArrayReal(in_array, i, i + 1)
                     swap = .TRUE.
                 end if
             end do
         end do
+        write (*, *) "сравнения k= ", k
+        write (1, *) "сравнения k= ", k
+        write (*, *) "перестановки kk= ", kk
+        write (1, *) "перестановки kk= ", kk
         return
     end subroutine SortBubbleRealASC
     subroutine SortBubbleRealDESC (in_array)
         !сортировка пузырьком от большего к меньшему
         real in_array(:)
-        integer temp, i
+        integer k,kk, i
         logical swap
+        k=0
+        kk=k
         swap = .TRUE.
         do while(swap)
             swap = .FALSE.
             do i = 1, size(in_array)
+                k=k+1
                 if(i + 1<=size(in_array) .and. in_array(i)<in_array(i + 1)) then
+                    kk=kk+1
                     call SwapElementArrayReal(in_array, i, i + 1)
                     swap = .TRUE.
                 end if
             end do
         end do
+        write (*, *) "сравнения k= ", k
+        write (1, *) "сравнения k= ", k
+        write (*, *) "перестановки kk= ", kk
+        write (1, *) "перестановки kk= ", kk
         return
     end subroutine SortBubbleRealDESC
 
@@ -287,24 +301,6 @@ program L9T1
 
     write (*, *) "Неотсортированный массив ", matrix
     write (1, *) "Неотсортированный массив ", matrix
-
-    call MinValArrayReal(matrix, iMin)
-    write (*, *) "Минимальный индекс: ", iMin, "значение: ", matrix(iMin)
-    write (1, *) "Минимальный индекс: ", iMin, "значение: ", matrix(iMin)
-
-    call MaxValArrayReal(matrix, iMax)
-    write (*, *) "Максимальный индекс: ", iMax, "значение: ", matrix(iMax)
-    write (1, *) "Максимальный индекс: ", iMax, "значение: ", matrix(iMax)
-
-    matrixTemp = matrix
-    call SortInsertRealASC(matrixTemp)
-    write (*, *) "Сортировка вставкой возврастание", matrixTemp
-    write (1, *) "Сортировка вставкой возврастание", matrixTemp
-
-    matrixTemp = matrix
-    call SortInsertRealDESC(matrixTemp)
-    write (*, *) "Сортировка вставкой убывание", matrixTemp
-    write (1, *) "Сортировка вставкой убывание", matrixTemp
 
     matrixTemp = matrix
     call SortBubbleRealASC(matrixTemp)

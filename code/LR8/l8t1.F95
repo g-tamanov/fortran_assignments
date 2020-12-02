@@ -152,10 +152,14 @@ program L8T1
     call SortBubbleDESC(sortMatrix)
     write(*, *) "3) Отсортированный масс ", sortMatrix
     write(1, *) "3) Отсортированный масс ", sortMatrix
+    write(*,2)(sortMatrix(i),i=1,size(matrix))
+    write(1,2)(sortMatrix(i),i=1,size(matrix))
 
     call RemoveSameElementsFromArray(sortMatrix, sameMatrix)
     write(*, *) "4) Дополнительный массив из отсортированного", sameMatrix
     write(1, *) "4) Дополнительный массив из отсортированного", sameMatrix
+    write(*,2)(sameMatrix(i),i=1,size(matrix))
+    write(1,2)(sameMatrix(i),i=1,size(matrix))
 
     i = sameMatrix(index_k)
     write(*, *) "5) Элемент, находящийся на k-ой позиции доп масс", i
@@ -168,6 +172,9 @@ program L8T1
     call FindIndexElementSortArray(sortMatrix, indexes, i)
     write(*, *) "6) Отсорт масс с индексами k-го", indexes
     write(1, *) "6) Отсорт масс с индексами k-го", indexes
+
+    2 format(10(2x, i2))
+    3 format(" индексы числа: ", i2)
 
     close(1)
 

@@ -1,5 +1,5 @@
 program L6T3
-    integer  matrix (5, 5)
+    integer  matrix (10, 10)
     real x
     OPEN (1, FILE = 'l6t3.txt', ACCESS = 'SEQUENTIAL', STATUS = 'unknown')
 
@@ -26,8 +26,12 @@ program L6T3
 
         end do
     end do
-    write(*, 10)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
-    write(1, 10)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
+    write(*, *) "массив:"
+    write(1, *) "массив:"
+
+    write(*, 2)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
+    write(1, 2)  ((matrix(i, j), i = 1, size(matrix, 1)), j = 1, size(matrix, 2))
+    2 format(10(2x, i2))
     10   format(2x, 5i5)
     close(1)
 
